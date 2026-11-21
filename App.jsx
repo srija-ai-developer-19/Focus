@@ -7,7 +7,9 @@ import useLocalStorage from './useLocalstorage.jsx'
 import { initialTasks } from './tasks.js'
 
 export default function App() {
-  const [tasks, setTasks] = useLocalStorage('focusboard-tasks', initialTasks)
+  const [storedTasks, setTasks] = useLocalStorage('focusboard-tasks-v2', initialTasks)
+  const tasks = Array.isArray(storedTasks) ? storedTasks : initialTasks
+
   const [currentView, setCurrentView] = useState('dashboard')
   const [search, setSearch] = useState('')
   const [activeTab, setActiveTab] = useState('All')
@@ -84,4 +86,4 @@ export default function App() {
       </main>
     </div>
   )
-                                                                                                  }
+        }
